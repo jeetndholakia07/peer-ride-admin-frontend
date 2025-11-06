@@ -11,6 +11,7 @@ import { rideColumns } from "./rideColumns";
 
 const RidesPage = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [isCalendarOpen, setIsCalendarOpen] = useState(false);
     const {
         data,
         isLoading,
@@ -32,8 +33,10 @@ const RidesPage = () => {
         <>
             {isLoading && <PageLoader />}
             <TableCard fetchDataHandler={fetchDataHandler} filtersComponent={
-                <FilterMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen}>
-                    <RideFilter setMenuOpen={setMenuOpen} fetchDataHandler={fetchDataHandler} limit={limit} />
+                <FilterMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} isCalendarOpen={isCalendarOpen}>
+                    <RideFilter setMenuOpen={setMenuOpen} fetchDataHandler={fetchDataHandler}
+                        limit={limit} setIsCalendarOpen={setIsCalendarOpen}
+                    />
                 </FilterMenu>
             }>
                 <ReactTable columns={columns} data={data}>

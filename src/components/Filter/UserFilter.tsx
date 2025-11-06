@@ -5,7 +5,7 @@ import { verified, role } from "../../i18n/keys/userFilter.json";
 
 type Props = {
     limit: number;
-    fetchDataHandler: (pageNo: number, pageLimit: number, filters?: Record<string, string | undefined>, search?: string) => void;
+    fetchDataHandler: (pageNo: number, pageLimit: number, filters?: Record<string, string | undefined>) => void;
     setMenuOpen: any;
 };
 

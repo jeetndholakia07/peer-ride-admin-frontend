@@ -5,7 +5,7 @@ import { type RootState } from "../../context/store/store.js";
 
 type searchProps = {
     fetchDataHandler: (pageNo: number, pageLimit: number,
-        filters?: Record<string, string | undefined>, search?: string) => void;
+        filters?: Record<string, string | undefined>) => void;
 }
 
 const SearchButton: FC<searchProps> = ({ fetchDataHandler }) => {
@@ -21,7 +21,7 @@ const SearchButton: FC<searchProps> = ({ fetchDataHandler }) => {
     };
 
     const handleSearch = () => {
-        fetchDataHandler(pageNo, pageLimit, undefined, search);
+        fetchDataHandler(pageNo, pageLimit, { search: search });
     }
 
     const handleEnterKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -30,12 +30,12 @@ const SearchButton: FC<searchProps> = ({ fetchDataHandler }) => {
         }
     };
 
-    const handleClear = (e:any) => {
+    const handleClear = (e: any) => {
         e.preventDefault();
         e.stopPropagation();
         setSearch("");
         setIsTyping(false);
-        fetchDataHandler(pageNo, pageLimit, undefined, undefined);
+        fetchDataHandler(pageNo, pageLimit, undefined);
     };
 
     return (

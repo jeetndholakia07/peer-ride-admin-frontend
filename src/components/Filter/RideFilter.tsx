@@ -2,19 +2,22 @@ import { useState, type FC } from "react";
 import { useTranslation } from "react-i18next";
 import Filter from "./Filter";
 import { driverStatus, rideStatus } from "../../i18n/keys/rideFilter.json";
+import { getDateComponentsfromDateObj } from "../../utils/dateFormat.js";
+import MonthPicker from "../Form/MonthPicker.js";
 
 type Props = {
     limit: number;
-    fetchDataHandler: (pageNo: number, pageLimit: number, filters?: Record<string, string | undefined>, search?: string) => void;
+    fetchDataHandler: (pageNo: number, pageLimit: number, filters?: Record<string, string | undefined>) => void;
     setMenuOpen: any;
+    setIsCalendarOpen: any;
 };
 
-const RideFilter: FC<Props> = ({ limit, fetchDataHandler, setMenuOpen }) => {
+const RideFilter: FC<Props> = ({ limit, fetchDataHandler, setMenuOpen, setIsCalendarOpen }) => {
     const [filters, setFilters] = useState<Record<string, any>>({
         driverStatus: "",
         driveStatus: "",
     });
-
+    const [selectedMonthYear, setSelectedMonthYear] = useState<Date | undefined>(undefined);
     const { t } = useTranslation();
 
     const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>, filterType: string) => {
@@ -26,13 +29,22 @@ const RideFilter: FC<Props> = ({ limit, fetchDataHandler, setMenuOpen }) => {
     };
 
     const handleResetFilter = () => {
+        setSelectedMonthYear(undefined);
         setFilters({ driverStatus: "", driveStatus: "" });
         fetchDataHandler(1, limit, {});
         setMenuOpen(false);
     };
 
+    const handleMonthChange = (date: any) => setSelectedMonthYear(date);
+
     const handleApplyFilter = () => {
-        fetchDataHandler(1, limit, filters);
+        const updatedFilters: Record<string, string> = { ...filters };
+        if (selectedMonthYear) {
+            const { month, year } = getDateComponentsfromDateObj(selectedMonthYear);
+            if (month) updatedFilters.month = month;
+            if (year) updatedFilters.year = year;
+        }
+        fetchDataHandler(1, limit, updatedFilters);
         setMenuOpen(false);
     };
 
@@ -68,6 +80,15 @@ const RideFilter: FC<Props> = ({ limit, fetchDataHandler, setMenuOpen }) => {
                     value={filters.driverStatus || ""}
                     onChange={(e) => handleFilterChange(e, "driverStatus")}
                     values={driverStatus}
+                />
+            </div>
+            <div className="mb-6">
+                <MonthPicker
+                    name="monthPicker"
+                    label={t("monthYear")}
+                    value={selectedMonthYear}
+                    onChange={([date]: any) => handleMonthChange(date)}
+                    setIsCalendarOpen={setIsCalendarOpen}
                 />
             </div>
             {/* Action Buttons */}

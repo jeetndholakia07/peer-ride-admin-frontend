@@ -1,3 +1,4 @@
+import RideRequest from "../../components/Rides/RideRequest";
 import StatusDisplay from "../../components/Rides/StatusDisplay";
 import { formatDateTime } from "../../utils/dateFormat";
 
@@ -34,5 +35,15 @@ export const rideColumns = [
     {
         header: "Vehicle Type",
         accessorFn: (row: any) => row.drive.vehicleDetails.vehicleType
+    },
+    {
+        header: "Vehicle Name",
+        accessorFn: (row: any) => row.drive.vehicleDetails.vehicleName
+    },
+    {
+        header: "Ride Requests",
+        cell: ({ row }: any) => {
+            return <RideRequest rideRequests={row.original.rideRequests} />
+        }
     }
 ]

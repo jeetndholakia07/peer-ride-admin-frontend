@@ -27,7 +27,6 @@ interface UseFetchResult<T> {
     page?: number,
     limit?: number,
     filters?: Record<string, string | undefined>,
-    search?:string
   ) => void;
   page: number;
   limit: number;

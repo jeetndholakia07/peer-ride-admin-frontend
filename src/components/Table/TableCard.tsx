@@ -11,7 +11,7 @@ type CardProps = {
   isAdd?: boolean;
   isFilter?: boolean;
   fetchDataHandler: (pageNo: number, pageLimit: number,
-    filters?: Record<string, string | undefined>, search?: string) => void;
+    filters?: Record<string, string | undefined>) => void;
   filtersComponent?: ReactNode;
 };
 

@@ -1,0 +1,13 @@
+{
+    "driverStatus": [
+        {"label":"All","value":"","filter":"driverStatus"},
+        {"label":"accepted","value":"accepted","filter":"driverStatus"},
+        {"label":"pending","value":"pending","filter":"driverStatus"}
+    ],
+    "rideStatus": [
+        {"label":"All","value":"","filter":"driveStatus"},
+        {"label":"pending","value":"pending","filter":"driveStatus"},
+        {"label":"completed","value":"completed","filter":"driveStatus"},
+        {"label":"cancelled","value":"cancelled","filter":"driveStatus"}
+    ]
+}

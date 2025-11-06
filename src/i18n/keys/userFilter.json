@@ -1,0 +1,12 @@
+{
+    "role":[
+        {"label":"All","value":"","filter":"role"},
+        {"label":"Passenger","value":"passenger","filter":"role"},
+        {"label":"Driver","value":"driver","filter":"role"}
+    ],
+    "verified":[
+        {"label":"All","value":"","filter":"isVerified"},
+        {"label":"Verified","value":true,"filter":"isVerified"},
+        {"label":"Unverified","value":false,"filter":"isVerified"}
+    ]
+}

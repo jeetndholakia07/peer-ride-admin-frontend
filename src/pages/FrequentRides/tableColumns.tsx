@@ -6,10 +6,10 @@ export const tableColumns = [
     },
     {
         header: "From",
-        accessorFn: (row: any) => row.from
+        accessorFn: (row: any) => row.from.address
     },
     {
         header: "To",
-        accessorFn: (row: any) => row.to
+        accessorFn: (row: any) => row.to.address
     },
 ]

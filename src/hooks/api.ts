@@ -1,6 +1,7 @@
 const baseURL = "peerRide/api";
 const adminURL = `${baseURL}/admin`;
-const authURL = `${baseURL}/auth`
+const authURL = `${baseURL}/auth`;
+const publicURL = `${baseURL}/public`;
 
 export const api = {
     auth: {

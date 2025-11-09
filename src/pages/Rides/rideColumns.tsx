@@ -11,7 +11,7 @@ export const rideColumns = [
     },
     {
         header: "Ride",
-        accessorFn: (row: any) => `${row.drive.from} - ${row.drive.to}`
+        accessorFn: (row: any) => `${row.drive.from.address} - ${row.drive.to.address}`
     },
     {
         header: "Departure Time",

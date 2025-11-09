@@ -13,5 +13,8 @@ export const api = {
         createFrequentRide: `${adminURL}/frequent-rides`,
         verifyUser: `${adminURL}/verify-user`,
         frequentRides: `${adminURL}/frequent-rides`
+    },
+    public: {
+        autoComplete: `${publicURL}/auto-complete`,
     }
 }

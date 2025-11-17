@@ -5,12 +5,12 @@ import * as Yup from "yup";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
-import axiosInstance from "../../hooks/axiosInstance";
 import { api } from "../../hooks/api";
 import LoadingButton from "../../components/Form/LoadingButton";
 import { useToast } from "../../components/Toast/ToastContext";
-import { addToken } from "../../IndexedDB/tokens";
 import { passwordRegex } from "../../utils/regex";
+import apiInterceptor from "../../hooks/apiInterceptor";
+import useAuth from "../../hooks/useAuth";
 
 type FormValues = {
     username: string;
@@ -27,6 +27,7 @@ const LoginPage = () => {
     const [error, setError] = useState("");
     const { showToast } = useToast();
     const navigate = useNavigate();
+    const { authenticateAdmin } = useAuth();
 
     const validationSchema = Yup.object().shape({
         username: Yup.string().required(t("formMessages.usernameRequired")),
@@ -40,12 +41,13 @@ const LoginPage = () => {
         const payload = { ...values };
         try {
             setIsLoading(true);
-            const response = await axiosInstance.post(api.auth.login, payload);
-            const { token, userId, username } = response.data;
-            await addToken(token, userId, username);
-            setError("");
-            showToast("success", t("messages.loginSuccess"));
-            navigate("/");
+            const response = await apiInterceptor.post(api.auth.login, payload);
+            if (response.data.success) {
+                setError("");
+                showToast("success", t("messages.loginSuccess"));
+                authenticateAdmin(response.data);
+                navigate("/");
+            }
         }
         catch (err) {
             console.error("Error logging user:", err);

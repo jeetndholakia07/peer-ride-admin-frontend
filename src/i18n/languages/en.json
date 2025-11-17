@@ -78,6 +78,7 @@
     "confirm": "Confirmation",
     "confirmVerify": "Are you sure you want to verify the user ? This action cannot be undone.",
     "add": "Add",
+    "adminProfile": "Admin Profile",
     "messages": {
         "loginSuccess": "Successfully logged in",
         "verifySuccess": "Verified user successfully",

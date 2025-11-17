@@ -7,6 +7,7 @@ import AppRoutes from './routes/AppRoutes';
 import { Provider } from "react-redux";
 import { store } from "./context/store/store";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { UserProvider } from "./context/UserContext";
 
 function App() {
   const queryClient = new QueryClient();
@@ -15,7 +16,9 @@ function App() {
       <ToastProvider>
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
-            <AppRoutes />
+            <UserProvider>
+              <AppRoutes />
+            </UserProvider>
           </Provider>
         </QueryClientProvider>
       </ToastProvider>

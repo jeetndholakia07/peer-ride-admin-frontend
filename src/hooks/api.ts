@@ -5,7 +5,9 @@ const publicURL = `${baseURL}/public`;
 
 export const api = {
     auth: {
-        login: `${authURL}/login-admin`
+        login: `${authURL}/login-admin`,
+        logout: `${authURL}/logout-admin`,
+        validate: `${authURL}/validate-admin`
     },
     admin: {
         dashboardMaster: `${adminURL}/dashboard-master`,

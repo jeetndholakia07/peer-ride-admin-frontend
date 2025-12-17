@@ -67,8 +67,8 @@ const RideFilter: FC<Props> = ({ limit, fetchDataHandler, setMenuOpen, setIsCale
                 <Filter
                     label={t("rideStatus")}
                     name="rideStatus"
-                    value={filters.rideStatus || ""}
-                    onChange={(e) => handleFilterChange(e, "rideStatus")}
+                    value={filters.driveStatus}
+                    onChange={(e) => handleFilterChange(e, "driveStatus")}
                     values={rideStatus}
                 />
             </div>
@@ -77,7 +77,7 @@ const RideFilter: FC<Props> = ({ limit, fetchDataHandler, setMenuOpen, setIsCale
                 <Filter
                     label={t("driverStatus")}
                     name="driverStatus"
-                    value={filters.driverStatus || ""}
+                    value={filters.driverStatus}
                     onChange={(e) => handleFilterChange(e, "driverStatus")}
                     values={driverStatus}
                 />

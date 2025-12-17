@@ -83,7 +83,7 @@ const MonthPicker: FC<MonthPickerProps> = ({
                     if (!mountedRef.current) return;
                     setIsCalendarOpen(false);
                 }}
-                className={`block w-full rounded-md border bg-white px-3 pt-5 text-sm text-gray-900 
+                className={`block w-full rounded-md border bg-white px-3 pt-4 text-sm text-gray-900 
           focus:outline-none focus:ring-2 focus:ring-blue-400
           ${error ? "border-red-500" : "border-gray-300"}
           ${disabled ? "bg-gray-100 text-gray-400 cursor-not-allowed" : "hover:border-gray-400"}
